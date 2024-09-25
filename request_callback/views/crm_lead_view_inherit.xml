@@ -5,7 +5,6 @@
         <field name="model">crm.lead</field>
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
-           
             <xpath expr="//header" position="inside">
                 <button name="request_consultant" type="object" string="Request a Consultant" 
                         class="btn-primary" attrs="{'invisible': [('company_id', 'not in', [1, 5, 6, 10])]}"
