@@ -8,7 +8,7 @@
             <!-- Add the button inside the header, above the form or wherever needed -->
             <xpath expr="//header" position="inside">
                 <button name="request_consultant" type="object" string="Request a Consultant" 
-                        class="btn-primary" attrs="{'invisible': [('phone', '==', '11123123')]}"
+                        class="btn-primary" attrs="{'invisible': [('phone', '==', 1112312)]}"
                         />
             </xpath>
         </field>
