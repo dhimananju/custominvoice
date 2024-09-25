@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <button name="request_consultant" type="object" string="Request a Consultant" 
-                        class="btn-primary" attrs="{'invisible': [('company_id', 'not in', [1, 5, 6, 10])]}"
+                        class="btn-primary" attrs="{'invisible': [('company_id', 'in', [1, 5, 6, 10])]}"
                         />
             </xpath>
         </field>
