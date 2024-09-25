@@ -10,8 +10,9 @@ class AccountMove(models.Model):
 
     def action_register_payment(self):
         """get payment state and tciekyt ref  and call redmine API function"""
+        result = super(AccountMove, self).action_register_payment()
         for move in self:
-             _logger.info("testing custom invoice")
+             _logger.info("1testing custom invoice")
              _logger.info(move.payment_state)
              _logger.info(move.ref)
              if move.ref:
