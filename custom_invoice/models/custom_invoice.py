@@ -7,7 +7,19 @@ _logger = logging.getLogger(__name__)
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
-      
+
+    def action_register_payment(self):
+        """get payment state and tciekyt ref  and call redmine API function"""
+        for move in self:
+             _logger.info("testing custom invoice")
+             _logger.info(move.payment_state)
+             _logger.info(move.ref)
+             if move.ref:
+                _logger.info("testing custom invoice3")
+                if move.payment_state == "paid":
+                    self.redmine_api(move.ref)
+
+    
     def action_invoice_paid(self):
         """get payment state and tciekyt ref  and call redmine API function"""
         for move in self:
