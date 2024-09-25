@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_crm_lead_form_inherit_custom_button" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.custom.button</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Add the button inside the header, above the form or wherever needed -->
+            <xpath expr="//header" position="inside">
+                <button name="request_consultant" type="object" string="Request a Consultant" 
+                        class="btn-primary" 
+                        />
+            </xpath>
+        </field>
+    </record>
+</odoo>
