@@ -6,6 +6,9 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <!-- Add the button inside the header, above the form or wherever needed -->
+            <xpath expr="//sheet//group" position="inside">
+                <field name="company_id" groups="base.group_multi_company"/>
+            </xpath>
             <xpath expr="//header" position="inside">
                 <button name="request_consultant" type="object" string="Request a Consultant" 
                         class="btn-primary" attrs="{'invisible': [ '&', ('company_id', '!=', '1'), 
