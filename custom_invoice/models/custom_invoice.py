@@ -11,15 +11,18 @@ class AccountMove(models.Model):
     def action_invoice_paid(self):
         """get payment state and tciekyt ref  and call redmine API function"""
         for move in self:
+             _logger.info("testing custom invoice")
              _logger.info(move.payment_state)
              _logger.info(move.ref)
              if move.ref:
+                _logger.info("testing custom invoice3")
                 if move.payment_state == "paid":
                     self.redmine_api(move.ref)
                  
                  
     """custom function to hit redmine API"""         
     def redmine_api(self,ref):
+        _logger.info("testing custom invoice2")
         redmineurl = "https://mypmstudio.com/issues/"+ref+".json"
         dataparams = { "issue": { "is_private": "1", "notes": "This Invoice is paid so closing the ticket", "status_id": 5 } }
         headers = {"Content-Type": "application/json", "Accept": "application/json", "Catch-Control": "no-cache","X-Redmine-API-Key":"eaffd4f722364a677d97e3e775eacfafc8adca82"}
