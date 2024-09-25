@@ -8,7 +8,9 @@
     """,
     'author': 'Anju Dhiman',
     'depends': ['crm'],
-    'data': [],
+    'data': [
+        'views/crm_lead_view_inherit.xml',
+    ],
     'installable': True,
     'application': False,
     'auto_install': False,
