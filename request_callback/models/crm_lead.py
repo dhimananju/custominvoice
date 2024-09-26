@@ -14,12 +14,12 @@ class CRMLead(models.Model):
             # Customize this condition based on how you want to evaluate lead_properties
             _logger.info(record.lead_properties)
             if record.lead_properties:
-                for data in record.lead_properties:
-                    _logger.info(data.value)
-                    # Example condition: Check if the One2many field has at least one entry
-                    record.lead_properties_valid = len(record.lead_properties) > 0
-            else:
-                record.lead_properties_valid = False
+                # Example: checking if at least one 'lead_properties' record has a certain value
+                record.lead_properties_valid = any(
+                    prop.value == 'test' for prop in record.lead_properties
+                )
+        else:
+            record.lead_properties_valid = False
 
     def request_consultant(self):
         _logger.info(self.phone)
