@@ -27,23 +27,7 @@ class AccountMove(models.Model):
             text = "Invoice has been raised"
             self.redmine_api(invoice.ref,2,text)
         return res
-    
-    @api.model
-    def button_mark_as_paid(self):
-        # Call the super method to ensure the base functionality is executed
-        res = super(AccountMove, self).button_mark_as_paid()
-        for move in self:
-             _logger.info("testing custom invoice")
-             _logger.info(move.payment_state)
-             _logger.info(move.ref)
-             if move.ref:
-                _logger.info("Change status to in progress")
-                if move.payment_state != "paid":
-                    text = "Invoice has been raised"
-                    self.redmine_api(move.ref,2,text)
-
-        return res
-        
+      
     def action_invoice_paid(self):
         """get payment state and ticket ref  and call redmine API function"""
         res = super(AccountMove, self).action_invoice_paid()
