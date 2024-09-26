@@ -21,7 +21,7 @@ class CRMLead(models.Model):
             else:
                 record.lead_properties_valid = False
 
-   def request_consultant(self):
+    def request_consultant(self):
         # Gather the fields you want to send to the third-party site
         description = self.description or ''
         oppno = self.name or ''
