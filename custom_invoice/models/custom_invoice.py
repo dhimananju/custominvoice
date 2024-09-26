@@ -16,6 +16,7 @@ class AccountPayment(models.Model):
         for payment in self:
             if payment.invoice_ids:
                 for invoice in payment.invoice_ids:
+                    pass
                     #invoice.custom_action_after_payment()
 
         return res
