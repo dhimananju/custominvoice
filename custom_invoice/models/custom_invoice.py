@@ -8,8 +8,8 @@ _logger = logging.getLogger(__name__)
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-     def action_register_payment(self):
-        """get payment state and tciekyt ref  and call redmine API function"""
+     def action_create_payments(self):
+        """get payment state and ticket ref  and call redmine API function"""
         for move in self:
              _logger.info("testing custom invoice")
              _logger.info(move.payment_state)
@@ -20,7 +20,7 @@ class AccountMove(models.Model):
                     self.redmine_api(move.ref,2)
     
     def action_invoice_paid(self):
-        """get payment state and tciekyt ref  and call redmine API function"""
+        """get payment state and ticket ref  and call redmine API function"""
         res = super(AccountMove, self).action_invoice_paid()
         for move in self:
              _logger.info("testing custom invoice")
