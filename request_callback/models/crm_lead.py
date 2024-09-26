@@ -21,4 +21,5 @@ class CRMLead(models.Model):
     def request_consultant(self):
         _logger.info(self.phone)
         _logger.info(self.lead_properties)
+        _logger.info(self.lead_properties_valid)
         return "anju here"
