@@ -1,5 +1,7 @@
 from odoo import models, api,fields
 import logging
+from odoo.http import request
+import werkzeug
 _logger = logging.getLogger(__name__)
 
 class CRMLead(models.Model):
@@ -12,19 +14,34 @@ class CRMLead(models.Model):
     def _compute_lead_properties_valid(self):
         for record in self:
             # Customize this condition based on how you want to evaluate lead_properties
-            _logger.info(record.lead_properties)
             if record.lead_properties:
                 # Example: checking if at least one 'lead_properties' record has a certain value
                 for data in record.lead_properties:
-                    _logger.info(data.get("value"))
                     record.lead_properties_valid = data.get("value")
             else:
                 record.lead_properties_valid = False
 
-            _logger.info(record.lead_properties_valid)
+   def request_consultant(self):
+        # Gather the fields you want to send to the third-party site
+        description = self.description or ''
+        oppno = self.name or ''
+        customername = self.partner_id.name or ''    
+        #https://mypmstudio.com/projects/ti-sales/issues/new?issue[description]=prefilled%20description
+        # Construct the URL with the fields as query parameters
+        base_url = "https://mypmstudio.com/projects/ti-sales/issues/new"
+        query_params = {
+            'issue[description]': re.sub(r'<[^>]+>', '', description)+  ".\nOpportunity Number: " + oppno,
+            'issue[subject]': customername  + "<What do you want the Consultant to Do?>",
+        }
 
-    def request_consultant(self):
-        _logger.info(self.phone)
-        _logger.info(self.lead_properties)
-        _logger.info(self.lead_properties_valid)
-        return "anju here"
+        # Construct the full URL with query parameters
+        encoded_params = werkzeug.urls.url_encode(query_params)
+        full_url = f"{base_url}?{encoded_params}"
+
+        # Redirect to the third-party URL
+        return {
+            'type': 'ir.actions.act_url',
+            'url': full_url,
+            'target': 'new'  # 'new' opens in a new tab; 'self' opens in the same window
+        }
+        
