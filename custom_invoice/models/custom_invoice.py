@@ -8,18 +8,13 @@ _logger = logging.getLogger(__name__)
 class AccountPayment(models.Model):
     _inherit = 'account.payment'
 
-    def action_creat_payments(self):
-        # Call the super method to ensure the base functionality is executed
-        res = super(AccountPayment, self).action_creat_payments()
-        _logger.info("anju testing custom invoice")
-        # Get invoices linked to this payment
-        for payment in self:
-            if payment.invoice_ids:
-                for invoice in payment.invoice_ids:
-                    pass
-                    #invoice.custom_action_after_payment()
-
-        return res
+    @api.model
+    def post(self):
+        # Call the super method to retain default functionality
+        super(AccountPayment, self).post()
+        _logger.info("here is I am ")
+        # Your custom logic here
+        #self.custom_function()
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
