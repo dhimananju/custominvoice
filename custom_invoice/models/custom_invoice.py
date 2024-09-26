@@ -5,6 +5,21 @@ import requests
 
 _logger = logging.getLogger(__name__)
 
+class AccountPayment(models.Model):
+    _inherit = 'account.payment'
+
+    def action_creat_payments(self):
+        # Call the super method to ensure the base functionality is executed
+        res = super(AccountPayment, self).action_creat_payments()
+        _logger.info("anju testing custom invoice")
+        # Get invoices linked to this payment
+        for payment in self:
+            if payment.invoice_ids:
+                for invoice in payment.invoice_ids:
+                    #invoice.custom_action_after_payment()
+
+        return res
+
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
