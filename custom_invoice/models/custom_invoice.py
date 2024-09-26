@@ -13,7 +13,8 @@ class AccountMove(models.Model):
         res = super(AccountMove, self).action_post()
         # Call the custom function after posting the invoice
         for invoice in self:
-            self.redmine_api(invoice.ref,2)
+            text = "Invoice has been raised"
+            self.redmine_api(move.ref,2,text)
         return res
     
     @api.model
