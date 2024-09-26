@@ -15,9 +15,9 @@ class CRMLead(models.Model):
             _logger.info(record.lead_properties)
             if record.lead_properties:
                 # Example: checking if at least one 'lead_properties' record has a certain value
-                record.lead_properties_valid = any(
-                    prop.value == 'test' for prop in record.lead_properties
-                )
+                for data in record.lead_properties:
+                    _logger.info(data.get("value"))
+                    record.lead_properties_valid = data.get("value")
         else:
             record.lead_properties_valid = False
 
