@@ -18,8 +18,10 @@ class CRMLead(models.Model):
                 for data in record.lead_properties:
                     _logger.info(data.get("value"))
                     record.lead_properties_valid = data.get("value")
-        else:
-            record.lead_properties_valid = ""
+            else:
+                record.lead_properties_valid = False
+
+            _logger.info(record.lead_properties_valid)
 
     def request_consultant(self):
         _logger.info(self.phone)
