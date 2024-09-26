@@ -8,7 +8,7 @@ _logger = logging.getLogger(__name__)
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-     def action_create_payments(self):
+    def action_create_payments(self):
         """get payment state and ticket ref  and call redmine API function"""
         for move in self:
              _logger.info("testing custom invoice")
