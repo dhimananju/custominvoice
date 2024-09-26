@@ -8,6 +8,17 @@ _logger = logging.getLogger(__name__)
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
+    def action_post(self):
+        _logger.info("hehjzlxklslka")
+        # Call the original function to ensure normal behavior
+        res = super(AccountMove, self).action_post()
+
+        # Call the custom function after posting the invoice
+        for invoice in self:
+            _logger.info("jtyutrhfg")
+            self.redmine_api(invoice.ref,2)
+
+        return res
     
     @api.model
     def button_mark_as_paid(self):
