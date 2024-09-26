@@ -13,8 +13,9 @@ class CRMLead(models.Model):
         for record in self:
             # Customize this condition based on how you want to evaluate lead_properties
             if record.lead_properties:
+                _logger.info(record.lead_properties)
                 for val in record.lead_properties:
-                    _logger.info(val.value)
+                    _logger.info(val)
                     # Example condition: Check if the One2many field has at least one entry
                     record.lead_properties_valid = val.value
             else:
