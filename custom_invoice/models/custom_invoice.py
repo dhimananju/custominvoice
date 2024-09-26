@@ -7,20 +7,6 @@ _logger = logging.getLogger(__name__)
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
-
-    def _check_if_paid(self):
-        if self.payment_state == 'paid':
-            _logger.info("invoice is paid")
-            # This is where Odoo normally calls action_invoice_paid()
-            self.action_invoice_paid()
-
-    @api.model
-    def post(self):
-        _logger.info("inside post method")
-        super(AccountMove, self).post()
-        _logger.info("inside post methsdfsfdod")
-        self._check_if_paid()
-
     
     def action_post(self):
         # Call the original function to ensure normal behavior
