@@ -10,6 +10,17 @@ class AccountPayment(models.TransientModel):
 
     def action_create_payments(self):
         _logger.info("Custom logic before creating payments in account.payment")
+        # Call the original method
+        res = super(AccountMove, self).action_create_payments()
+        for move in self:
+             _logger.info("Anju testing custom invoice")
+             _logger.info(move.payment_state)
+             _logger.info(move.ref)
+             if move.ref:
+                _logger.info("testing custom anju invoice")
+                if move.payment_state == "paid":
+                    text = "This Invoice is paid so closing the ticket"
+                    self.redmine_api(move.ref,5,text)
 
 
 class AccountMove(models.Model):
@@ -27,6 +38,7 @@ class AccountMove(models.Model):
     def action_create_payments(self):
         # Custom logic before payment creation
         print("Custom logic before creating payments")
+        
 
     
     def action_invoice_paid(self):
