@@ -11,7 +11,7 @@ class AccountPayment(models.TransientModel):
     def action_create_payments(self):
         _logger.info("Custom logic before creating payments in account.payment")
         # Call the original method
-        res = super(AccountMove, self).action_create_payments()
+        res = super(AccountPayment, self).action_create_payments()
         for move in self:
              _logger.info("Anju testing custom invoice")
              _logger.info(move.payment_state)
