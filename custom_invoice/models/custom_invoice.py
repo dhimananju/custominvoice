@@ -9,7 +9,7 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     @api.model
-    def _get_invoice_in_payment_state(self):
+    def _invoice_paid_hook(self):
         _logger.info("asfsfssfsf")
         for move in self:
              _logger.info("testidasdadasdng custom adadadinvoice")
