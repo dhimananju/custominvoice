@@ -9,6 +9,15 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
 
     @api.model
+    def create(self, vals):
+        _logger.info("Create method override invoice")
+        _logger.info(vals.get('ref'))
+
+    def write(self, vals):
+        _logger.info("write method override invoice")
+        _logger.info(vals.get('ref'))
+    
+    @api.model
     def _invoice_paid_hook(self):
         for move in self:
              _logger.info("override _invoice_paid_hook")
