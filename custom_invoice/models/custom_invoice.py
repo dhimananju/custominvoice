@@ -9,6 +9,7 @@ class AccountMove(models.Model):
     _inherit = 'account.move'
     def _get_invoice_in_payment_state(self):
         _logger.info("fsfsh sdflksjlasdjkalfjaslfhsafh")
+        res = super(AccountMove, self)._get_invoice_in_payment_state()
         for move in self:
              _logger.info("testing custom invoicasdadae")
              _logger.info(move.payment_state)
