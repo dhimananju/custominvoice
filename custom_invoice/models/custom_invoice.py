@@ -22,10 +22,6 @@ class AccountMove(models.Model):
             text = "Invoice has been raised"
             self.redmine_api(invoice.ref,2,text)
 
-    def action_create_payments(self):
-        # Custom logic before payment creation
-        print("Custom logic before creating payments")
-        
     def action_invoice_paid(self):
         """get payment state and ticket ref  and call redmine API function"""
         res = super(AccountMove, self).action_invoice_paid()
