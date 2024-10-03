@@ -7,13 +7,7 @@ _logger = logging.getLogger(__name__)
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
-    def _get_invoice_in_payment_state(self):
-        _logger.info("fsfsh sdflksjlasdjkalfjaslfhsafh")
-        res = super(AccountMove, self)._get_invoice_in_payment_state()
-        for move in self:
-             _logger.info("testing custom invoicasdadae")
-             _logger.info(move.payment_state)
-    
+   
     def action_post(self):
         # Call the original function to ensure normal behavior
         res = super(AccountMove, self).action_post()
