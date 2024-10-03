@@ -5,7 +5,7 @@ import requests
 
 _logger = logging.getLogger(__name__)
 
-class AccountPayment(models.Model):
+class AccountPayment(models.TransientModel):
     _inherit = 'account.payment.register'
 
     def action_create_payments(self):
