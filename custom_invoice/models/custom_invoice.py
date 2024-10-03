@@ -5,27 +5,13 @@ import requests
 
 _logger = logging.getLogger(__name__)
 
-class AccountPayment(models.TransientModel):
-    _inherit = 'account.payment.register'
-
-    def action_create_payments(self):
-        _logger.info("Custom logic before creating payments in account.payment")
-        # Call the original method
-        res = super(AccountPayment, self).action_create_payments()
-        _logger.info(self._fields.keys())
-        for move in self:
-             _logger.info("Anju testing custom invoice")
-             _logger.info(move.payment_state)
-             _logger.info(move.ref)
-             if move.ref:
-                _logger.info("testing custom anju invoice")
-                if move.payment_state == "paid":
-                    text = "This Invoice is paid so closing the ticket"
-                    self.redmine_api(move.ref,5,text)
-
-
 class AccountMove(models.Model):
     _inherit = 'account.move'
+    def _get_invoice_in_payment_state(self):
+        _logger.info("fsfsh sdflksjlasdjkalfjaslfhsafh")
+        for move in self:
+             _logger.info("testing custom invoicasdadae")
+             _logger.info(move.payment_state)
     
     def action_post(self):
         # Call the original function to ensure normal behavior
