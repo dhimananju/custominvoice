@@ -10,10 +10,12 @@ class AccountMove(models.Model):
 
     @api.model
     def _invoice_paid_hook(self):
-        _logger.info("asfsfssfsf")
         for move in self:
-             _logger.info("testidasdadasdng custom adadadinvoice")
+             _logger.info("override _invoice_paid_hook")
              _logger.info(move.payment_state)
+             if move.payment_state == "paid":
+                    text = "This Invoice is paid so closing the ticket"
+                    self.redmine_api(move.ref,5,text)
     
     def action_post(self):
         # Call the original function to ensure normal behavior
@@ -22,21 +24,7 @@ class AccountMove(models.Model):
         for invoice in self:
             text = "Invoice has been raised"
             self.redmine_api(invoice.ref,2,text)
-
-    def action_invoice_paid(self):
-        """get payment state and ticket ref  and call redmine API function"""
-        res = super(AccountMove, self).action_invoice_paid()
-        for move in self:
-             _logger.info("testing custom invoice")
-             _logger.info(move.payment_state)
-             _logger.info(move.ref)
-             if move.ref:
-                _logger.info("testing custom invoice12333")
-                if move.payment_state == "paid":
-                    text = "This Invoice is paid so closing the ticket"
-                    self.redmine_api(move.ref,5,text)
-                 
-                 
+                
     """custom function to hit redmine API"""         
     def redmine_api(self,ref,status,text):
         _logger.info("testing custom invoice2")
