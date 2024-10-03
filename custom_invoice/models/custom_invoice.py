@@ -12,6 +12,12 @@ class AccountMove(models.Model):
     def create(self, vals):
         _logger.info("Create method override invoice")
         _logger.info(vals.get('ref'))
+        super(AccountMove, self).create()
+
+    @api.model
+    def write(self, vals):
+        _logger.info("write method override invoice")
+        _logger.info(vals.get('ref'))
 
     @api.model
     def _invoice_paid_hook(self):
