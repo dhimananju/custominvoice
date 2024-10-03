@@ -32,8 +32,8 @@ class CRMLead(models.Model):
         # Construct the URL with the fields as query parameters
         base_url = "https://mypmstudio.com/projects/ti-sales/issues/new"
         query_params = {
-            'issue[description]': re.sub(r'<[^>]+>', '', description)+  ".\nOpportunity Number: " + oppno,
-            'issue[subject]': customername  + "<What do you want the Consultant to Do?>",
+            'issue[description]': "{{lead(" + str(oppno) + ")}} \n" + re.sub(r'<[^>]+>', '', description),
+            'issue[subject]': customername  + " - <What do you want the Consultant to Do?>",
         }
 
         # Construct the full URL with query parameters
