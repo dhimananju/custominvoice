@@ -5,6 +5,13 @@ import requests
 
 _logger = logging.getLogger(__name__)
 
+class AccountPayment(models.Model):
+    _inherit = 'account.payment.register'
+
+    def action_create_payments(self):
+        _logger.info("Custom logic before creating payments in account.payment")
+
+
 class AccountMove(models.Model):
     _inherit = 'account.move'
     
