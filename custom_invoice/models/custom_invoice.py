@@ -12,7 +12,7 @@ class AccountMove(models.Model):
     def create(self, vals):
         _logger.info("Create method override invoice")
         _logger.info(vals.get('ref'))
-        super(AccountMove, self).create()
+        super(AccountMove, self,vals).create()
 
     @api.model
     def write(self, vals):
