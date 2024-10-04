@@ -5,10 +5,7 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <!-- Add the custom Many2one field to the form view -->
-            <xpath expr="." position="before">
-                     <field name="x_sw" widget="many2many_tags" placeholder="Add Software"/> 
-                
-            </xpath>
+            <field name="x_sw" widget="many2many_tags" placeholder="Add Software"/> 
         </field>
     </record>
 </odoo>
