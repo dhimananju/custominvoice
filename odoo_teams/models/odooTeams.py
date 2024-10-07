@@ -3,7 +3,7 @@ import logging
 from odoo.http import request
 import werkzeug
 import re
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 import json
 import requests
 
@@ -44,14 +44,16 @@ class odooTeams(models.Model):
             name = self.name
             companyid = self.company_id
             # Parse the HTML and extract text
-            soup = BeautifulSoup(vals.get('description'), "html.parser")
-            plain_text = soup.get_text()
-            _logger.info(plain_text)
+            #soup = BeautifulSoup(vals.get('description'), "html.parser")
+            #plain_text = soup.get_text()
+            #_logger.info(plain_text)
             #call custom function to send emssage to teams channel
             #add check for compamny id 5, 6, 10, 1 - Channel 19:c4c08d6944614b2e8930905c905e1c68
-            _logger.info(companyid.id)
+             allowed_companies = [1, 5, 6, 10]
+            channelId = '19:c4c08d6944614b2e8930905c905e1c68'
+            _logger.info(companyid)
             if companyid.id in allowed_companies:
-                _logger.info(companyid)
+                _logger.info(companyid.id)
                 self.sendMessageTeams(name,channelId)
                 
             allowed_companies_secod = 3
