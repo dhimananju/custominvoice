@@ -39,7 +39,7 @@ class odooTeams(models.Model):
     
     @api.model
     def write(self, vals): 
-        lead = super(odooTeams, self).write(vals)
+        #lead = super(odooTeams, self).write(vals)
         # Check if the message is related to a lead
         if vals.get('description'):
             # Custom logic here, e.g. log, notify, etc.
