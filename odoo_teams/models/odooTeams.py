@@ -27,12 +27,12 @@ class odooTeams(models.Model):
         _logger.info(companyid)
         if companyid.id in allowed_companies:
             _logger.info(companyid.id)
-            self.sendMessageTeams(name,channelId)
+            self.sendMessageTeams(name,channelId,msg)
             
         allowed_companies_secod = 3
         channelId_Secon = '19:49218707ae584db683da25b254de80d8'
         if companyid.id == allowed_companies_secod:
-            self.sendMessageTeams(name,channelId_Secon)
+            self.sendMessageTeams(name,channelId_Secon,msg)
 
         return lead
     
