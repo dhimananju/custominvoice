@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <!-- Add the custom Many2one field to the form view -->
             <xpath expr="//span[@name='address_name']" position="before">
-               <!-- <field name="x_sw" widget="many2many_tags" placeholder="Add Software"/> -->
+                <field name="x_sw" widget="many2many_tags" placeholder="Add Software"/> 
             </xpath>
         </field>
     </record>
