@@ -23,7 +23,9 @@ class odooTeams(models.Model):
         #add check for compamny id 5, 6, 10, 1 - Channel 19:c4c08d6944614b2e8930905c905e1c68
         allowed_companies = [1, 5, 6, 10]
         channelId = '19:c4c08d6944614b2e8930905c905e1c68'
+        _logger.info(companyid)
         if companyid in allowed_companies:
+            _logger.info(companyid)
             self.sendMessageTeams(name,channelId)
             
         allowed_companies_secod = [3]
@@ -47,9 +49,9 @@ class odooTeams(models.Model):
             _logger.info(plain_text)
             #call custom function to send emssage to teams channel
             #add check for compamny id 5, 6, 10, 1 - Channel 19:c4c08d6944614b2e8930905c905e1c68
-            allowed_companies = [1, 5, 6, 10]
-            channelId = '19:c4c08d6944614b2e8930905c905e1c68'
+            _logger.info(companyid)
             if companyid in allowed_companies:
+                _logger.info(companyid)
                 self.sendMessageTeams(name,channelId)
                 
             allowed_companies_secod = [3]
