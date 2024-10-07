@@ -3,18 +3,22 @@
     <menuitem id="contact_menu_root"
         name="Contact Software"
         parent="contacts.menu_contacts"
-        sequence="2"/>
+        sequence="2"
+        groups="base.group_user" 
+        />
         
     <menuitem id="software_list_menu"
         name="Software"
         action="action_software_contact"
         parent="contact_menu_root"
+        groups="base.group_user" 
         sequence="2"/>
 
     <menuitem id="softwarecategory_menu"
         name="Catgeory"
         action="action_software_category"
         parent="contact_menu_root"
+        groups="base.group_user" 
         sequence="2"/>
 
 </odoo>
