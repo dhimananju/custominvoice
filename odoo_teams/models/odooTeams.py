@@ -22,6 +22,7 @@ class odooTeams(models.Model):
         #call custom function to send emssage to teams channel
         #add check for compamny id 5, 6, 10, 1 - Channel 19:c4c08d6944614b2e8930905c905e1c68
         msg = "A new lead/opp "+name+" is added"
+        _logger.info(msg)
         allowed_companies = [1, 5, 6, 10]
         channelId = '19:c4c08d6944614b2e8930905c905e1c68'
         _logger.info(companyid)
