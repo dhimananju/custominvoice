@@ -8,6 +8,7 @@ class ContactSoftware(models.Model):
     category = fields.Many2one(
         'software.category',  # Reference to the custom model
         string="Category",
+        required=True,
         ondelete='set null'  # Specifies what happens on deletion of related records
     )
     website = fields.Char(string="Website")
