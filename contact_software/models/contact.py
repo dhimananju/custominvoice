@@ -5,7 +5,7 @@ _logger = logging.getLogger(__name__)
 
 class CRMLeadRedmine(models.Model):
     _inherit = 'res.partner'
-    contact_sw = fields.Many2one(
+    x_contact_sw = fields.Many2one(
         'contact.software',  # Reference to the custom model
         string="Software",
     )
