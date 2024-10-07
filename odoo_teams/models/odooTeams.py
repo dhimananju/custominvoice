@@ -65,7 +65,7 @@ class odooTeams(models.Model):
         _logger.info("sendMessageTeams")
         _logger.info(name)
         redmineurl = "https://mypmstudio.com/NotifyChannel.json"
-        headers = {"Message": "text-message" ,"ChannelName":"19:c4c08d6944614b2e8930905c905e1c68","X-Redmine-API-Key":channelId}
+        headers = {"Message": "text-message" ,"ChannelName":channelId,"X-Redmine-API-Key":"eaffd4f722364a677d97e3e775eacfafc8adca82"}
         response = requests.post(redmineurl, headers=headers)
         _logger.info(response.content)
 
