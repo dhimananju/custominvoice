@@ -9,7 +9,7 @@ class ContactSoftware(models.Model):
         'software.category',  # Reference to the custom model
         string="Category",
         required=True,
-        ondelete='set null'  # Specifies what happens on deletion of related records
+        ondelete='restrict'  # Specifies what happens on deletion of related records
     )
     website = fields.Char(string="Website")
     description = fields.Html(string='Description')  # HTML editor field
