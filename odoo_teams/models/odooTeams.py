@@ -14,7 +14,6 @@ class odooTeams(models.Model):
 
     @api.model
     def create(self, vals):
-        _logger.info(vals)
         _logger.info("create method called")
         lead = super(odooTeams, self).create(vals)
         name = lead.name
@@ -25,9 +24,7 @@ class odooTeams(models.Model):
         _logger.info(msg)
         allowed_companies = [1, 5, 6, 10]
         channelId = '19:c4c08d6944614b2e8930905c905e1c68'
-        _logger.info(companyid)
         if companyid.id in allowed_companies:
-            _logger.info(companyid.id)
             self.sendMessageTeams(name,channelId,msg)
             
         allowed_companies_secod = 3
@@ -40,24 +37,22 @@ class odooTeams(models.Model):
    
     def write(self, vals): 
         _logger.info("write function")
-        #lead = super(odooTeams, self).write(vals)
+        lead = super(odooTeams, self).write(vals)
         # Check if the message is related to a lead
         if vals.get('description'):
             # Custom logic here, e.g. log, notify, etc.
             name = self.name
             companyid = self.company_id
             # Parse the HTML and extract text
-            #soup = BeautifulSoup(vals.get('description'), "html.parser")
-            #plain_text = soup.get_text()
-            #_logger.info(plain_text)
+            soup = BeautifulSoup(vals.get('description'), "html.parser")
+            plain_text = soup.get_text()
+            _logger.info(plain_text)
             #call custom function to send emssage to teams channel
             #add check for compamny id 5, 6, 10, 1 - Channel 19:c4c08d6944614b2e8930905c905e1c68
-            msg = "A new lead/opp "+name+" is edited with description: vals.get('description')"
+            msg = "A new lead/opp "+name+" is edited with description: plain_text"
             allowed_companies = [1, 5, 6, 10]
             channelId = '19:c4c08d6944614b2e8930905c905e1c68'
-            _logger.info(companyid)
             if companyid.id in allowed_companies:
-                _logger.info(companyid.id)
                 self.sendMessageTeams(name,channelId,msg)
                 
             allowed_companies_secod = 3
@@ -69,7 +64,6 @@ class odooTeams(models.Model):
     
     def sendMessageTeams(self,name,channelId,msg):
         _logger.info("sendMessageTeams")
-        _logger.info(name)
         redmineurl = "https://mypmstudio.com/NotifyChannel.json"
         headers = {"Message": msg ,"ChannelName":channelId,"X-Redmine-API-Key":"eaffd4f722364a677d97e3e775eacfafc8adca82"}
         response = requests.post(redmineurl, headers=headers)
