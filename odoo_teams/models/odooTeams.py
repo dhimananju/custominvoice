@@ -37,7 +37,7 @@ class odooTeams(models.Model):
 
         return lead
     
-    @api.model
+   
     def write(self, vals): 
         _logger.info("write function")
         #lead = super(odooTeams, self).write(vals)
