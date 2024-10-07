@@ -3,7 +3,7 @@ import logging
 from odoo.http import request
 import werkzeug
 import re
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 import json
 import requests
 
