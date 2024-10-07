@@ -9,6 +9,7 @@
     'sequence':-100,
     'depends':['base','contacts'],
     'data':[
+        'security/ir.model.access.csv',
         'views/contact_menu.xml',
         'views/contactsoftware.xml',
         'views/contacts.xml',
