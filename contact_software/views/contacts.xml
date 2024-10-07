@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <!-- Add the custom Many2one field to the form view -->
             <xpath expr="//span[@name='address_name']" position="before">
-			
+                <field name="swlist"/> 
             </xpath>
         </field>
     </record>

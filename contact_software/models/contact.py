@@ -5,4 +5,6 @@ _logger = logging.getLogger(__name__)
 
 class CRMLeadRedmine(models.Model):
     _inherit = 'res.partner'
+    
+    swlist = fields.Char(string='Software')
    
