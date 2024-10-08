@@ -1,18 +1,18 @@
 {
-    'name': "TI Odoo Teams Integration",
+    'name': "TI Lead/opp Software",
     'version': '1.0',
     'author': "Anju Dhiman",
     'category': 'Uncategorized',
     'description': """
-    Using Redmine API whenever a new lead is created or a new opportunity is created or a new note is logged on a lead or opportunity, notify the Teams channel for that Lead/Opportunity
+    Add software option to contact and add software/category menu to contact module we well
     """,
     'sequence':-100,
-    'depends':['base','contacts'],
+    'depends':['base','crm'],
     'data':[
         'security/ir.model.access.csv',
-        'views/contact_menu.xml',
-        'views/contactsoftware.xml',
-        'views/contacts.xml',
+        'views/menu.xml',
+        'views/software.xml',
+        'views/leads.xml',
         'views/category.xml',
     ],
     'installable':True,

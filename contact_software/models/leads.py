@@ -3,10 +3,10 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-class CRMLeadRedmine(models.Model):
-    _inherit = 'res.partner'
+class CRMLeadSoftware(models.Model):
+    _inherit = 'crm.lead'
     
     swlist = fields.Many2many(
          'contact.software',  # Reference to the custom model
-         string="Softwaresss",
+         string="Software",
      )

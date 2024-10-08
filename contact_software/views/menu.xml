@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <menuitem id="contact_menu_root"
-        name="Contact Software"
-        parent="contacts.menu_contacts"
+        name="Software List"
+        parent="crm.crm_menu_root"
         sequence="2"
-        groups="base.group_user" 
         />
-        
+
     <menuitem id="software_list_menu"
-        name="Software"
+        name="Software List"
         action="action_software_contact"
         parent="contact_menu_root"
-        groups="base.group_user" 
         sequence="2"/>
 
     <menuitem id="softwarecategory_menu"
         name="Catgeory"
         action="action_software_category"
         parent="contact_menu_root"
-        groups="base.group_user" 
         sequence="2"/>
+     
+   
 
 </odoo>
