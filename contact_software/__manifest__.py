@@ -14,6 +14,7 @@
         'views/software.xml',
         'views/leads.xml',
         'views/category.xml',
+        'views/company.xml',
     ],
     'installable':True,
     'auto_install': False,
