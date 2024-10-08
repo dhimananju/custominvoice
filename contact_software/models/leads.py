@@ -28,3 +28,17 @@ class CRMLeadSoftware(models.Model):
                 
 
         return lead
+    
+    def write(self, vals): 
+        _logger.info("write function leads")
+        lead = super(CRMLeadSoftware, self).write(vals)
+        partner_id = self.partner_id
+        swlist = self.swlist
+        _logger.info(swlist)
+        #check if partner id exist or not , if exist update software list there
+        partner_record = request.env['res.partner'].sudo().browse(partner_id.id)
+        if partner_record.exists():
+            partner_record.write({
+                'swlist': swlist,
+            })
+        return lead
