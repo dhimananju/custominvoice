@@ -8,12 +8,12 @@
     'sequence':-100,
     'depends':['base','crm'],
     'data':[
-        'views/menu.xml',
         'views/software.xml',
         'views/leads.xml',
         'views/category.xml',
         'views/company.xml',
         'views/contact.xml',
+        'views/menu.xml',
     ],
     'installable':True,
     'auto_install': False,
