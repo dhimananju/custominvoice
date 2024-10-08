@@ -15,6 +15,7 @@
         'views/company.xml',
         'views/contact.xml',
         'views/menu.xml',
+        
     ],
     'installable':True,
     'auto_install': False,
