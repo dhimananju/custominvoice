@@ -10,12 +10,12 @@
     'depends':['base','crm'],
     'data':[
         'security/ir.model.access.csv',
-        'views/menu.xml',
         'views/software.xml',
         'views/leads.xml',
         'views/category.xml',
         'views/company.xml',
         'views/contact.xml',
+        'views/menu.xml',
     ],
     'installable':True,
     'auto_install': False,
