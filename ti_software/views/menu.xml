@@ -6,7 +6,17 @@
         sequence="2"
         />
 
-    
+    <menuitem id="software_list_menu"
+        name="Software List"
+        action="action_software_contact"
+        parent="contact_menu_root"
+        sequence="2"/>
+
+    <menuitem id="softwarecategory_menu"
+        name="Catgeory"
+        action="action_software_category"
+        parent="contact_menu_root"
+        sequence="2"/>
      
    
 
