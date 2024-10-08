@@ -8,6 +8,7 @@
     'sequence':-100,
     'depends':['base','crm'],
     'data':[
+        'security/ir.mode.access.csv'
         'views/software.xml',
         'views/leads.xml',
         'views/category.xml',
