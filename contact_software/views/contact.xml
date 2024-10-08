@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_partner_form_custom" model="ir.ui.view">
+        <field name="name">res.partner.form.custom.many2one</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add the custom Many2one field to the form view -->
+            <xpath expr="//span[@name='address_name']" position="before">
+			<field name="swlist" widget="many2many_tags" placeholder="Add Software"/> 
+            </xpath>
+        </field>
+    </record>
+</odoo>
