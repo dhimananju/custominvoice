@@ -14,7 +14,7 @@ class CRMLeadSoftware(models.Model):
     @api.model
     def create(self, vals):
         _logger.info("create leads method called")
-        lead = super(odooTeams, self).create(vals)
+        lead = super(CRMLeadSoftware, self).create(vals)
         partner_id = lead.partner_id
         swlist = lead.swlist
         _logger.info(swlist)
