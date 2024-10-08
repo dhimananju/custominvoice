@@ -1,8 +1,8 @@
 from odoo import api,fields,models
 
-class ContactSoftware(models.Model):
-    _name = "contact.software"
-    _description = "Contacts Software"
+class Software(models.Model):
+    _name = "software"
+    _description = "Software"
 
     name = fields.Char(string="Software Name", required=True)
     category = fields.Many2one(

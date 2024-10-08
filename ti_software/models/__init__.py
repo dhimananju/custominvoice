@@ -1,4 +1,4 @@
-from . import contactsoftware
+from . import software
 from . import category
 from . import leads
 from . import company

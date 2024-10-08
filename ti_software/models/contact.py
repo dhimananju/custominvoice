@@ -3,10 +3,12 @@ import logging
 
 _logger = logging.getLogger(__name__)
 
-class CompanySoftware(models.Model):
-    _inherit = 'res.company'
+class ContactSoftware(models.Model):
+    _inherit = 'res.partner'
     
     swlist = fields.Many2many(
-         'contact.software',  # Reference to the custom model
+         'software',  # Reference to the custom model
          string="Software",
      )
+     
+    

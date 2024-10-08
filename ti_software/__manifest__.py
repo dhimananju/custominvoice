@@ -4,8 +4,7 @@
     'author': "Anju Dhiman",
     'category': 'Uncategorized',
     'description': """
-    Add software option to contact and add software/category menu to contact module we well
-    """,
+    Add software to lead/opportunity and organisation module  """,
     'sequence':-100,
     'depends':['base','crm'],
     'data':[

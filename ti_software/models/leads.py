@@ -8,7 +8,7 @@ class CRMLeadSoftware(models.Model):
     _inherit = 'crm.lead'
     
     swlist = fields.Many2many(
-         'contact.software',  # Reference to the custom model
+         'software',  # Reference to the custom model
          string="Software",
      )
     
