@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <!-- Add the custom field below the existing fields in the form -->
-            <xpath expr="//div[@class='o_address_format']" position="after">
+            <xpath expr="//div[@class='o_wrap_field ']" position="before">
                 <group>
                     <field name="swlist" widget="many2many_tags" placeholder="Add Software"/>
                 </group>

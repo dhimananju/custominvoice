@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
             <!-- Add the custom field after the company name field -->
-            <xpath expr="//field[@name='name']" position="after">
+            <xpath expr="//h1" position="after">
                 <field name="swlist" widget="many2many_tags" placeholder="Add Software"/>
             </xpath>
         </field>
