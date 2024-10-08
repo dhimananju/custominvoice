@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-contact_software.access_software,access_software,software.model_software,base.group_user,1,1,1,1
-contact_software.access_software_category,access_software_category,software.model_software_category,base.group_user,1,1,1,1
+ti_software.access_software,access_software,ti_software.model_software,base.group_user,1,1,1,1
+ti_software.access_software_category,access_software_category,ti_software.model_software_category,base.group_user,1,1,1,1
