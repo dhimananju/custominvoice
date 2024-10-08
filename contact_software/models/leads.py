@@ -19,8 +19,11 @@ class CRMLeadSoftware(models.Model):
         swlist = lead.swlist
         _logger.info(swlist)
         #check if partner id exist or not , if exist update software list there
-        #partner_record = request.env['res.partner'].sudo().browse(partner_id.id)
-            #if partner_record.exists():
+        partner_record = request.env['res.partner'].sudo().browse(partner_id.id)
+            if partner_record.exists():
+                partner_record.write({
+                    'swlist': swlist,
+                })
                 
 
         return lead
