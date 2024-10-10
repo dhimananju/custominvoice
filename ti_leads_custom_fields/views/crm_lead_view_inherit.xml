@@ -6,8 +6,8 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
              <!-- Add the lead_properties_valid field to the form (invisible) -->
-           
-            <xpath expr="//h1" position="after">
+           align-items-start
+            <xpath expr="//field[@class='align-items-start']" position="after">
                 <field name="pms_ticket_number" String="PMS Ticket number"/>
             </xpath>
         </field>
