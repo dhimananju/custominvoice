@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
              <!-- Add the lead_properties_valid field to the form (invisible) -->
           
-            <xpath expr="//field[@name='name']" position="after">
+            <xpath expr="//span" position="after">
                 <field name="pms_ticket_number" String="PMS Ticket number"/>
             </xpath>
         </field>
