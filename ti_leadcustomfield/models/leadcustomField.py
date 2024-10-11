@@ -8,7 +8,19 @@ class leadcustomField(models.Model):
     _inherit = 'crm.lead'
 
     pms_ticket = fields.Char(string="PMS Ticket Number")
+    
+    #update pms_ticket when pipleline edited with PM ticket url
+    def write(self, vals): 
+        _logger.info("write function PMS")
+        # Check if the message is related to a lead
+        for field_name in self:
+            pms_ticket = field_name.pms_ticket
+            record_type = field_name.type
+            if record_type == "opportunity":
+                vals['pms_ticket'] = 'https://mypmstudio.com/issues/'+pms_ticket
 
+        lead = super(leadcustomField, self).write(vals)
+        return lead
     
 class CrmLead(models.TransientModel):
     _inherit = 'crm.lead2opportunity.partner'
