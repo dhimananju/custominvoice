@@ -1,0 +1,31 @@
+
+<odoo>
+    <record id="view_crm_lead_form_inherit_pms_tciketno" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.custom</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Target the partner_id field (Contact) and add your custom field below it -->
+            <xpath expr="//h2" position="inside">
+                <group name="pmsTicketno" >
+                    <field name="pms_ticket" modifiers="{'invisible': [('type', '!=', 'opportunity')]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_crm_lead_form_inherit_pms_tciketno" model="ir.ui.view">
+        <field name="name">crm.lead.form.inherit.custom</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Target the partner_id field (Contact) and add your custom field below it -->
+            <xpath expr="//h2" position="inside">
+                <group name="pmsTicketno" >
+                    <field name="pms_ticket" widget="url" modifiers="{'invisible': [('type', '!=', 'lead')]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
