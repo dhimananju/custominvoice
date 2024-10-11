@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <!-- Target the partner_id field (Contact) and add your custom field below it -->
-            <xpath expr="//h2" position="inside">
+            <xpath expr="//field[@name='partner_id']" position="after">
                 <group name="pmsTicketno" >
                     <field name="pms_ticket" attrs="{'invisible': [('type', '==', 'opportunity')]}"/>
                 </group>
@@ -20,7 +20,7 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <!-- Target the partner_id field (Contact) and add your custom field below it -->
-            <xpath expr="//h2" position="inside">
+            <xpath expr="//field[@name='partner_id']" position="after">
                 <group name="pmsTicketno" >
                     <field name="pms_ticket" widget="url" attrs="{'invisible': [('type', '==', 'lead')]}"/>
                 </group>
