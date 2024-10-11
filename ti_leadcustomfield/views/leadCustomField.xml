@@ -8,7 +8,7 @@
             <!-- Target the partner_id field (Contact) and add your custom field below it -->
             <xpath expr="//h2" position="inside">
                 <group name="pmsTicketno" >
-                    <!--<field name="pms_ticket" attrs="{'invisible': [('type', '!=', 'opportunity')]}"/>-->
+                    <field name="pms_ticket" attrs="{'invisible': [('type', '!=', 'opportunity')]}"/>
                 </group>
             </xpath>
         </field>
@@ -22,7 +22,7 @@
             <!-- Target the partner_id field (Contact) and add your custom field below it -->
             <xpath expr="//h2" position="inside">
                 <group name="pmsTicketno" >
-                    <!--<field name="pms_ticket" widget="url" attrs="{'invisible': [('type', '!=', 'lead')]}"/>-->
+                    <field name="pms_ticket" widget="url" attrs="{'invisible': [('type', '!=', 'lead')]}"/>
                 </group>
             </xpath>
         </field>
