@@ -11,14 +11,14 @@ class leadcustomField(models.Model):
     
     #update pms_ticket when pipleline edited with PM ticket url
     def write(self, vals): 
-        _logger.info("write function PMS")
         # Check if the message is related to a lead
         for field_name in self:
             pms_ticket = field_name.pms_ticket
             record_type = field_name.type
             if record_type == "opportunity":
-                vals['pms_ticket'] = 'https://mypmstudio.com/issues/'+pms_ticket
-
+                if vals.get('pms_ticket'):
+                    vals['pms_ticket'] = 'https://mypmstudio.com/issues/'+vals['pms_ticket']
+                
         lead = super(leadcustomField, self).write(vals)
         return lead
     
