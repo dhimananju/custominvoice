@@ -8,24 +8,11 @@
             <!-- Target the partner_id field (Contact) and add your custom field below it -->
             <xpath expr="//h1" position="after">
                 <group name="pmsTicketno" >
-                    <field name="pms_ticket" attrs="{'invisible': [('type', '!=', 'opportunity')]}"/>
+                    <field name="pms_ticket" widget="url"/>
                 </group>
             </xpath>
         </field>
     </record>
 
-    <record id="view_crm_lead_form_inherit_pms_tciketno" model="ir.ui.view">
-        <field name="name">crm.lead.form.inherit.custom</field>
-        <field name="model">crm.lead</field>
-        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
-        <field name="arch" type="xml">
-            <!-- Target the partner_id field (Contact) and add your custom field below it -->
-            <xpath expr="//h1" position="after">
-                <group name="pmsTicketno" >
-                    <field name="pms_ticket" widget="url" attrs="{'invisible': [('type', '!=', 'lead')]}"/>
-                </group>
-            </xpath>
-        </field>
-    </record>
 
 </odoo>
