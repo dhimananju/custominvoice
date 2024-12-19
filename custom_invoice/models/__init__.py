@@ -1,5 +1,3 @@
 from . import custom_invoice
+from . import account_move_line
 import logging
-
-_logger = logging.getLogger(__name__)
-_logger.info('custom_invoice models initialized')

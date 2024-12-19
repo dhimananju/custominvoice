@@ -1,10 +1,10 @@
 {
-    'name': 'Custom Invoice Module',
+    'name': 'TI Custom Invoice Module',
     'version': '1.0',
     'category': 'Invoicing',
-    'summary': 'Customizations for Invoice after update',
+    'summary': 'Update Redmine ticket status and add note',
     'description': """
-        This module overrides the invoice functionality after an update.
+        This module overrides the invoice functionality after an update. Update Redmine ticket status and add note
     """,
     'author': 'Anju Dhiman',
     'depends': ['account'],

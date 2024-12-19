@@ -5,33 +5,29 @@ import requests
 
 _logger = logging.getLogger(__name__)
 
-class AccountMove(models.Model):
-    _inherit = 'account.move'
+class AccountMoveLine(models.Model):
+    _inherit = 'account.move.line'
 
-    @api.model
-    def _invoice_paid_hook(self):
-        for move in self:
-             _logger.info("override _invoice_paid_hook")
-             if move.payment_state == "paid":
-                 if move.ref!="":
-                        checkIfexist =  self.checkTicketExist(move.ref)
+    def reconcile(self):
+        """
+        Override the reconcile method to include custom logic.
+        """
+        # Call the original reconcile method
+        result = super(AccountMoveLine, self).reconcile()
+        _logger.info("reconcile")
+        # Fetch the related invoices and apply custom logic
+        for line in self:
+            invoice = line.move_id
+            if invoice and invoice.is_invoice():
+                if invoice.payment_state == 'paid':
+                    if invoice.ref!="":
+                        checkIfexist =  self.checkTicketExist(invoice.ref)
                         if checkIfexist:
                                 text = "This Invoice is paid so closing the ticket"
-                                self.redmine_api(move.ref,5,text)
-    
-    def action_post(self):
-        # Call the original function to ensure normal behavior
-        res = super(AccountMove, self).action_post()
-        # Call the custom function after posting the invoice
-        #for invoice in self:
-            # if invoice.payment_state != "paid":
-            #     if invoice.ref!="":
-            #         checkIfexist =  self.checkTicketExist(invoice.ref)
-            #         _logger.info(checkIfexist)
-            #         if checkIfexist:
-            #                 text = "Invoice has been raised"
-            #                 self.redmine_api(invoice.ref,2,text)
+                                self.redmine_api(invoice.ref,5,text)
 
+        return result
+  
     def checkTicketExist(self,ref):
         redmineurl = "https://mypmstudio.com/issues/"+ref+".json"
         headers = {"Content-Type": "application/json", "Accept": "application/json", "Catch-Control": "no-cache","X-Redmine-API-Key":"c114e0da57abd372e21771c5e0c334674bcb871f"}
