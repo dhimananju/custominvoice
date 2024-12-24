@@ -11,10 +11,11 @@
                     <div class="col-7 float-right text-muted" style="font-size:14px;">
                         <div class="row mb-1">
                             <div class="col-11" style="text-align:right;">
-                                      <t t-if="o.legal_entity_punjab">
-											<t t-set="company_addr" t-value=""/>
-									  </t>
-									  <t t-if="not o.legal_entity_punjab">
+				    <t t-foreach="o._fields" t-as="field_name">
+					    <p><strong><t t-esc="field_name"/>:</strong> <t t-esc="o[field_name]"/></p>
+					</t>
+                                     
+									 
 											<t t-set="company_addr" t-value="''"/>
 											  <t t-if="company.partner_id.street"><t t-set="company_addr" t-value="company_addr + company.partner_id.street"/></t>
 											
@@ -26,7 +27,7 @@
 											  <t t-if="company.partner_id.zip"><t t-set="company_addr" t-value="company_addr + company.partner_id.zip"/></t>
 											  <t t-if="company.partner_id.country_id"><t t-set="company_addr" t-value="company_addr + ', ' + company.partner_id.country_id.display_name"/></t>
 											  <span t-esc="company_addr"/>
-									  </t>
+									 
                             </div>
                             <div class="col-1" style="text-align:right;">
                                 <i class="fa fa-map-marker" t-attf-style="color:{{primary_color}};font-size:20px;"/>
