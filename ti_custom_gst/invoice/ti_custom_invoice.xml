@@ -232,9 +232,7 @@
                 </tr>
             </xpath>
             <xpath expr="//div[contains(@class, 'page')]" position="inside">
-                <div t-if="o.company_id and o.company_id.stamp_image" class="col">
-                    <img t-if="o.company_id.stamp_image" t-att-src="image_data_uri(o.company_id.stamp_image)" style="max-height: 230px;" alt="Logo" class="pull-right"/>
-                </div>
+               
             </xpath>
         </template>
     </data>
