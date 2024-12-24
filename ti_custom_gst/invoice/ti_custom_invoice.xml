@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="ti_custom_header" inherit_id="web.external_layout_standard">
+            <xpath expr="//div[contains(@t-attf-class, 'header')]" position="replace">
+                <t t-set="primary_color" t-value="company.primary_color"/>
+                <div class="header o_company_#{company.id}_layout row border-bottom">
+                    <div class="col-5">
+                       <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height:120px !important;max-width:300px !important;" alt="Logo"/>
+                    </div>
+                    <div class="col-7 float-right text-muted" style="font-size:14px;">
+                        <div class="row mb-1">
+                            <div class="col-11" style="text-align:right;">
+                                      <t t-if="o.legal_entity_punjab">
+											<t t-set="company_addr" t-value="Sector 74 Phase 8B, 1st Floor, F-338, UNIT 205 NEXA TOWER,
+													INDUSTRIAL AREA SECTOR 74, Mohali, SAS Nagar, Punjab,
+													160055"/>
+									  </t>
+									  <t t-else="">
+											<t t-set="company_addr" t-value="''"/>
+											  <t t-if="company.partner_id.street"><t t-set="company_addr" t-value="company_addr + company.partner_id.street"/></t>
+											
+											  <t t-if="company.partner_id.street2"><t t-set="company_addr" t-value="company_addr + ', ' + company.partner_id.street2"/></t>
+											  <t t-if="company.partner_id.city"><t t-set="company_addr" t-value="company_addr + ', ' + company.partner_id.city"/></t>
+											  <t t-if="company.partner_id.state_id"><t t-set="company_addr" t-value="company_addr + ', ' + company.partner_id.state_id.display_name"/></t>
+											  <span t-esc="company_addr"/><br/>
+											  <t t-set="company_addr" t-value="''"/>
+											  <t t-if="company.partner_id.zip"><t t-set="company_addr" t-value="company_addr + company.partner_id.zip"/></t>
+											  <t t-if="company.partner_id.country_id"><t t-set="company_addr" t-value="company_addr + ', ' + company.partner_id.country_id.display_name"/></t>
+											  <span t-esc="company_addr"/>
+									  </t>
+                            </div>
+                            <div class="col-1" style="text-align:right;">
+                                <i class="fa fa-map-marker" t-attf-style="color:{{primary_color}};font-size:20px;"/>
+                            </div>
+                        </div>
+                        <div t-if="company.phone" class="row mb-1">
+                            <div class="col-11" style="text-align:right;">
+                                <span t-field="company.phone"/>
+                            </div>
+                            <div class="col-1" style="text-align:right;">
+                                <i class="fa fa-phone" t-attf-style="color:{{primary_color}};font-size:20px;"/>
+                            </div>
+                        </div>
+                        <div t-if="company.website" class="row mb-1">
+                            <div class="col-11" style="text-align:right;">
+                                <span t-field="company.website"/>
+                            </div>
+                            <div class="col-1" style="text-align:right;">
+                                <i class="fa fa-link" t-attf-style="color:{{primary_color}};font-size:20px;"/>
+                            </div>
+                        </div>
+                        <div t-if="company.email" class="row mb-1">
+                            <div class="col-11" style="text-align:right;">
+                                <span t-field="company.email"/>
+                            </div>
+                            <div class="col-1" style="text-align:right;">
+                                <i class="fa fa-envelope" t-attf-style="color:{{primary_color}};font-size:20px;"/>
+                            </div>
+                        </div>
+                        <div t-if="company.vat and company.country_id and company.country_id.code=='IE'" class="row mb-1">
+                            <div class="col-11" style="text-align:right;">
+                                VAT: <span t-field="company.vat"/>
+                            </div>
+                            <div class="col-1" style="text-align:right;">
+                                <i class="fa fa-info-circle" t-attf-style="color:{{primary_color}};font-size:20px;"/>
+                            </div>
+                        </div>
+                        <div t-if="company.name and company.name in ['Target Integration Ltd', 'Alberon Ltd', 'Target Integration (UK) Ltd'] and company.country_id and company.country_id.code and company.country_id.code in ['IE', 'GB'] and company.company_registry" class="row mb-1">
+                            <div class="col-11" style="text-align:right;">
+                                Company Reg. Number: <span t-field="company.company_registry"/>
+                            </div>
+                            <div class="col-1" style="text-align:right;">
+                                <i class="fa fa-hashtag" t-attf-style="color:{{primary_color}};font-size:20px;"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            <xpath expr="//div[contains(@t-attf-class, 'article')]/div" position="attributes">
+                <attribute name="style">display:none</attribute>
+            </xpath>
+            <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="replace">
+                <div class="footer" style="padding-top:50px">
+                    <div class="row mb-4">
+                        <div class="col-11" t-attf-style="border-top:4px solid {{primary_color}};">
+                            <div name="financial_infos" class="text-center">
+                                <span t-raw="company.report_footer"/>
+                            </div>
+
+                            <div t-if="report_type == 'pdf'" class="text-muted text-center" style="font-size:11px;">
+                                Page: <span class="page"/> / <span class="topage"/>
+                            </div>
+                        </div>
+                        <img t-if="'favicon' in company and company.favicon" t-att-src="image_data_uri(company.favicon)" class="col-1" style="position: relative;bottom: 45px;padding: 0px; max-height: 80px; max-width: 80px;"/>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+        <template id="ti_report_invoice_document_inherit" inherit_id="account.report_invoice_document" priority="100">
+             <!-- hide default address shown by Odoo  -->
+            <xpath expr="//t[@t-set='address']" position="replace"/>
+
+            <xpath expr="//div[contains(@class, 'page')]/h2" position="attributes">
+                <attribute name="style">display:none</attribute>
+            </xpath>
+            <xpath expr="//div[@id='informations']" position="attributes">
+                <attribute name="style">display:none</attribute>
+            </xpath>
+            <xpath expr="//div[@id='informations']" position="after">
+                <t t-set="primary_color" t-value="o.company_id.primary_color"/>
+                <t t-set="shubpy_company" t-value="o.company_id.name=='Shubpy Solutions Pvt Ltd'"/>
+                <t t-if="shubpy_company"><t t-set="secondary_color" t-value="'white'"/></t>
+                <t t-else=""><t t-set="secondary_color" t-value="'#D0E0E3'"/></t>
+                <div class="row mt-4 py-3 m-0" t-attf-style="border-top:4px solid {{primary_color}};border-bottom:4px solid {{primary_color}};background-color:{{secondary_color}};font-family:Saira;">
+                    <div class="col-7 text-left">
+                        <strong t-attf-style="font-size:25px;color:{{primary_color}};"><i class="fa fa-file-o mr-1"/>Invoice To:</strong>
+                        <div>
+                            <i t-if="shubpy_company" class="fa fa-building-o" t-attf-style="color:{{primary_color}};"/>
+                            <strong t-field="o.partner_id" style="color:#595661;"/>
+                            <div class="row font-weight-bold pl-3">
+                                <i class="fa fa-map-marker" t-attf-style="color:{{primary_color}};"/>
+                                <div class="o_address_format col-11 text-left mx-0" style="color:#595661;">
+                                    <span t-field="o.partner_id.street"/>
+                                    <span t-field="o.partner_id.street2"/>
+                                    <br/>
+                                    <span t-field="o.partner_id.city"/>
+                                    <span t-field="o.partner_id.state_id"/>
+                                    <span t-field="o.partner_id.zip"/>
+                                    <br/>
+                                    <span t-field="o.partner_id.country_id"/>
+                                </div>
+                            </div>
+                            <div t-if="o.partner_id.phone" class="row pl-3">
+                                <i class="fa fa-phone" t-attf-style="color:{{primary_color}};"/>
+                                <div class="col-11" style="color:#595661;">
+                                    <strong style="color:#595661;"><u><span t-field="o.partner_id.phone"/></u></strong>
+                                </div>
+                            </div>
+                            <div t-if="o.partner_id.email" class="row pl-3">
+                                <i class="fa fa-envelope" t-attf-style="color:{{primary_color}};"/>
+                                <div class="col-11">
+                                    <a t-att-href="'mailto:' + o.partner_id.email">
+                                        <u><span t-field="o.partner_id.email"/></u>
+                                    </a>
+                                </div>
+                            </div>
+                            <div t-if="o.partner_id.website" class="row pl-3">
+                                <i class="fa fa-link" t-attf-style="color:{{primary_color}};"/>
+                                <div class="col-11">
+                                    <a t-att-href="o.partner_id.website">
+                                        <u><span t-field="o.partner_id.website"/></u>
+                                    </a>
+                                </div>
+                            </div>
+                            <div t-if="o.partner_id.vat" class="row pl-3 font-weight-bold" style="color:#595661;">
+                                <i class="fa fa-info-circle" t-attf-style="color:{{primary_color}};"/>
+                                <div class="col-11">
+                                    <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label" id="inv_tax_id_label"/>
+                                    <t t-else="">Tax ID</t>: <span t-field="o.partner_id.vat"/>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="col-5" style="color:white;font-size:20px;">
+                        <div class="mb-2 p-2" t-attf-style="background-color:{{primary_color}};">
+                            <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Invoice:</span>
+                            <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Draft Invoice:</span>
+                            <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice:</span>
+                            <span t-if="o.move_type == 'out_refund'">Credit Note:</span>
+                            <span t-if="o.move_type == 'in_refund'">Vendor Credit Note:</span>
+                            <span t-if="o.move_type == 'in_invoice'">Vendor Bill:</span>
+                            <span t-if="o.name != '/'" t-field="o.name"/>
+                        </div>
+                        <div class="mb-1 p-2" t-attf-style="background-color:{{primary_color}};">
+                            <div t-if="o.invoice_date">
+                                <span>Invoice Date: </span>
+                                <span t-field="o.invoice_date"/>
+                            </div>
+                            <div t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'">
+                                <span>Due Date:</span>
+                                <span t-field="o.invoice_date_due"/>
+                            </div>
+                            <div t-if="o.ref">
+                                <span>Customer Reference:</span>
+                                <span t-field="o.ref"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+            Applying changes in the table 
+            <xpath expr="//table[@name='invoice_line_table']" position="attributes">
+                <attribute name="style">margin-top:1.5rem;</attribute>
+            </xpath>
+
+            <xpath expr="//table[@name='invoice_line_table']/thead" position="attributes">
+                <attribute name="class">p-4</attribute>
+                <attribute name="t-attf-style">font-weight:normal;color:white;background-color:{{primary_color}};</attribute>
+            </xpath>
+
+            <xpath expr="//th[@name='th_description']" position="before">
+                <th name="th_item">Item</th>
+            </xpath>
+            <xpath expr="//tbody[contains(@class, 'invoice_tbody')]/t" position="before">
+                <t t-set="item_count" t-value="0"/>
+            </xpath>
+            <xpath expr="//td[@name='account_invoice_line_name']" position="before">
+                <td>
+                    <t t-set="item_count" t-value="item_count + 1"/>
+                    <span t-esc="item_count"/>
+                </td>
+            </xpath>
+
+            <xpath expr="//span[contains(@t-field,'o.amount_residual')]/../.." position="attributes">
+                <attribute name="style">display:none</attribute>
+            </xpath>
+            <xpath expr="//div[@id='total']//table" position="inside">
+                <tr class="border-black">
+                    <td><strong>Balance</strong></td>
+                    <td class="text-right">
+                        <span t-field="o.amount_residual"/>
+                    </td>
+                </tr>
+                <tr class="border-black">
+                    <td><strong>Payment Status</strong></td>
+                    <td class="text-right">
+                        <t t-if="o.payment_state == 'not_paid'"><span style="font-weight:bold;font-size: 100%;" t-field="o.payment_state" class="badge badge-danger rounded-0"/></t>
+                        <t t-if="o.payment_state == 'partial'"><span style="font-weight:bold;font-size: 100%;" t-field="o.payment_state" class="badge badge-warning rounded-0"/></t>
+                        <t t-if="o.payment_state == 'paid'"><span style="font-weight:bold;font-size: 100%;" t-field="o.payment_state" class="badge badge-success rounded-0"/></t>
+                    </td>
+                </tr>
+            </xpath>
+            <xpath expr="//div[contains(@class, 'page')]" position="inside">
+                <div t-if="o.company_id and o.company_id.stamp_image" class="col">
+                    <img t-if="o.company_id.stamp_image" t-att-src="image_data_uri(o.company_id.stamp_image)" style="max-height: 230px;" alt="Logo" class="pull-right"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
