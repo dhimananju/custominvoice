@@ -25,7 +25,10 @@
 							  <span t-esc="company_addr"/>
 					     </t>
 				    	     <t t-else="">
-							<t t-set="company_addr" t-value="'tetstt'"/>
+							  <t t-set="company_addr" t-value="'Sector 74 Phase 8B, 1st Floor, F-338, UNIT 205 NEXA TOWER,'"/>
+							  <t t-set="company_addr" t-value="'INDUSTRIAL AREA SECTOR 74, Mohali, SAS Nagar, Punjab,'"/>
+							  <span t-esc="company_addr"/><br/>
+							  <t t-set="company_addr" t-value="'160055'"/>
 					     </t>
                             </div>
                             <div class="col-1" style="text-align:right;">
