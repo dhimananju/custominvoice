@@ -12,7 +12,7 @@
                         <div class="row mb-1">
                             <div class="col-11" style="text-align:right;">
 				   
-					     <t t-esc="o.legal_entity_punjab"/>
+					     <t t-if="o.legal_entity_punjab">
 					
                                      
 									 
@@ -27,7 +27,7 @@
 											  <t t-if="company.partner_id.zip"><t t-set="company_addr" t-value="company_addr + company.partner_id.zip"/></t>
 											  <t t-if="company.partner_id.country_id"><t t-set="company_addr" t-value="company_addr + ', ' + company.partner_id.country_id.display_name"/></t>
 											  <span t-esc="company_addr"/>
-									 
+					     </t>			 
                             </div>
                             <div class="col-1" style="text-align:right;">
                                 <i class="fa fa-map-marker" t-attf-style="color:{{primary_color}};font-size:20px;"/>
