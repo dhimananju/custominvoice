@@ -11,9 +11,9 @@
                     <div class="col-7 float-right text-muted" style="font-size:14px;">
                         <div class="row mb-1">
                             <div class="col-11" style="text-align:right;">
-				    <t t-foreach="o._fields" t-as="field_name">
-					    <p><strong><t t-esc="field_name"/>:</strong> <t t-esc="o[field_name]"/></p>
-					</t>
+				   
+					     <t t-esc="o"/>
+					
                                      
 									 
 											<t t-set="company_addr" t-value="''"/>
