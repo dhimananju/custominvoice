@@ -12,9 +12,7 @@
                         <div class="row mb-1">
                             <div class="col-11" style="text-align:right;">
                                       <t t-if="o.legal_entity_punjab">
-											<t t-set="company_addr" t-value="Sector 74 Phase 8B, 1st Floor, F-338, UNIT 205 NEXA TOWER,
-													INDUSTRIAL AREA SECTOR 74, Mohali, SAS Nagar, Punjab,
-													160055"/>
+											<t t-set="company_addr" t-value="Sector 74 Phase 8B"/>
 									  </t>
 									  <t t-else="">
 											<t t-set="company_addr" t-value="''"/>
