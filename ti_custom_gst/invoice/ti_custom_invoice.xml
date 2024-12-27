@@ -84,7 +84,14 @@
                     <div class="row mb-4">
                         <div class="col-11" t-attf-style="border-top:4px solid {{primary_color}};">
                             <div name="financial_infos" class="text-center">
-                                <span t-raw="company.report_footer"/>
+				    <t t-if="o.legal_entity_punjab">
+					<span>Testbnnn</span>
+				    </t>
+				    <t t-else="">
+					<span t-raw="company.report_footer"/>
+				    </t>
+				    
+                                
                             </div>
 
                             <div t-if="report_type == 'pdf'" class="text-muted text-center" style="font-size:11px;">
