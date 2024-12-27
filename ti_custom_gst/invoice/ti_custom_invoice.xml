@@ -88,7 +88,7 @@
                             </div>
 
                             <div t-if="report_type == 'pdf'" class="text-muted text-center" style="font-size:11px;">
-                                Page: <span class="page"/> / <span class="topage"/>
+                                Page12: <span class="page"/> / <span class="topage"/>
                             </div>
                         </div>
                         <img t-if="'favicon' in company and company.favicon" t-att-src="image_data_uri(company.favicon)" class="col-1" style="position: relative;bottom: 45px;padding: 0px; max-height: 80px; max-width: 80px;"/>
