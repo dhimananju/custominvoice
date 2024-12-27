@@ -13,7 +13,7 @@
 
   # always loaded
     'data'     : [
-                'invoice/ti_custom_invoice.xml',
+                #'invoice/ti_custom_invoice.xml',
                 'views/account_move_view.xml'
     ]
 }
