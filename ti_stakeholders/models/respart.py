@@ -5,7 +5,7 @@ from odoo import fields, models, _
 class respart(models.Model):
     _inherit = 'res.partner'
 
-   name_with_company = fields.Char(
+    name_with_company = fields.Char(
         string="Name with Company", compute="_compute_name_with_company"
     )
 
