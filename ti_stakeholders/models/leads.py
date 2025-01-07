@@ -6,6 +6,10 @@ class crmLeads(models.Model):
     _inherit = "crm.lead"
     #contactline_ids = fields.One2many("res.partner",'lead_id','Contacts')
     contactline_ids = fields.One2many("stake.holder",'lead_id','Contacts Detail')
+    relationship = fields.Selection([
+        ('decision_maker', 'Decision Maker'),
+        ('influencer', 'Influencer')
+    ], string='Relationship', default='decision_maker')
 
 class stakeHolder(models.Model):
     _name = "stake.holder"
