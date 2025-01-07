@@ -10,7 +10,7 @@
                 <page string="Stakeholder">
                             <field name="contactline_ids">
                             <list editable="bottom" multi_edit="1">
-                            <field name="partner_id"/>
+                            
                             <field name="relationship"/>
                                 
                             </list>
